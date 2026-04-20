@@ -1,46 +1,61 @@
-# Security TP
-Ce projet est une application web simple permettant de réaliser des opérations de sécurité de base : cryptage, décryptage, hachage et comparaison de hashs.
+# TP Sécurité
 
-## Fonctionnalités
-- **Cryptage** : Utilise le chiffre de César avec une clé aléatoire.
-- **Décryptage** : Permet de décrypter un texte avec une clé fournie.
-- **Hachage** : Génère un hash SHA-256 d'un texte.
-- **Comparaison** : Vérifie si un texte correspond à un hash donné.
+Ce TP est divisé en deux parties : une application console (Exercice 1) et une application web complète (Exercice 2). Les deux parties partagent la même logique de sécurité sécurisée.
 
-## Technologies utilisées
-- **Backend** : Flask (Python)
-- **Frontend** : HTML/JS/CSS (Nginx)
-- **Conteneurisation** : Docker & Docker Compose
+## Fonctionnalités Communes
+- **Chiffrement XOR** : Utilise une clé sécurisée générée aléatoirement.
+- **Déchiffrement** : Restaure le texte original via la clé fournie.
+- **Hachage PBKDF2** : Utilise SHA-256 avec un sel (salt) pour une sécurité maximale.
+- **Comparaison de Hash** : Vérification sécurisée de l'intégrité des données.
 
-## Installation et Lancement
+---
 
-### Avec Docker (Recommandé)
-Lancez simplement la commande suivante à la racine du projet :
+## Exercice 1 : Application Console
+Une interface en ligne de commande pour tester rapidement les fonctions de sécurité.
+
+### Lancement
+```bash
+python console/main.py
+```
+
+---
+
+## Exercice 2 : Application Web
+Une architecture complète composée d'un backend Flask et d'un frontend HTML/JS.
+
+### Installation et Lancement
+
+#### 1. Avec Docker (Recommandé)
 ```bash
 docker-compose up --build
 ```
 - **Frontend** : [http://localhost:8080](http://localhost:8080)
 - **Backend** : [http://localhost:8000](http://localhost:8000)
 
-### Sans Docker
-1. **Backend** :
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   python app.py
-   ```
-2. **Frontend** :
-   Ouvrez le fichier `frontend/index.html` dans votre navigateur ou utilisez un serveur local (ex: Live Server).
+#### 2. Sans Docker
+- **Backend** :
+  ```bash
+  cd backend
+  pip install -r requirements.txt
+  python app.py
+  ```
+- **Frontend** : Ouvrez `frontend/index.html` dans un navigateur.
 
-## Structure du Projet
+---
+
+## Structure du TP
 ```text
 .
-├── backend/            # Application Flask
+├── console/            # Exercice 1 : Application Console
+│   └── main.py
+├── backend/            # Exercice 2 : API Flask
 │   ├── utils/
-│   │   └── tools.py    # Logique de cryptage/hachage
-│   └── app.py          # API Routes
-├── frontend/           # Interface utilisateur
-│   ├── src/js/         # Logique JavaScript
-│   └── index.html      # Page d'accueil
-└── docker-compose.yml  # Configuration Docker
+│   │   └── tools.py    # Logique commune de sécurité
+│   └── app.py
+├── frontend/           # Exercice 2 : Interface Web
+│   ├── src/
+│   │   ├── js/
+│   │   └── style.css
+│   └── index.html
+└── docker-compose.yml
 ```
