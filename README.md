@@ -1,5 +1,4 @@
-# Security Tools (ENSA S2)
-
+# Security TP
 Ce projet est une application web simple permettant de réaliser des opérations de sécurité de base : cryptage, décryptage, hachage et comparaison de hashs.
 
 ## Fonctionnalités
